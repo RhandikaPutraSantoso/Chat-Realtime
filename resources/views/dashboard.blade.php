@@ -24,7 +24,7 @@
                         Gunakan panel di samping untuk mulai chatting, mengelola percakapan, dan menjelajahi fitur lainnya.
                     </p>
                 </div>
-                <img src="https://iili.io/JYzt4vu.png" alt="Chat Illustration" class="w-28 h-28 hidden sm:block">
+                
             </div>
 
             <!-- Quick Actions -->

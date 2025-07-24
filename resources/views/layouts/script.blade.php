@@ -173,14 +173,45 @@
         }
 
         function previewImage(event) {
-            const file = event.target.files[0];
-            if (file && file.type.startsWith('image/')) {
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    document.getElementById('preview-container').style.display = 'block';
-                    document.getElementById('preview-image').src = e.target.result;
-                };
-                reader.readAsDataURL(file);
-            }
-        }
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const container = document.getElementById('preview-container');
+    const image = document.getElementById('preview-image');
+
+    if (file.type.startsWith('image/')) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            image.src = e.target.result;
+            container.classList.remove('hidden');
+        };
+        reader.readAsDataURL(file);
+    } else {
+        // Preview dokumen (opsional: tampilkan nama file atau ikon)
+        image.src = '/img/file-icon.png'; // default icon
+        container.classList.remove('hidden');
+    }
+}
+function clearPreview() {
+    document.getElementById('preview-image').src = '';
+    document.getElementById('file').value = '';
+    document.getElementById('preview-container').classList.add('hidden');
+}
+
+
     </script>
+    <script>
+    document.getElementById('searchUser').addEventListener('input', function () {
+        const query = this.value.toLowerCase();
+        const users = document.querySelectorAll('#user-list button');
+
+        users.forEach(user => {
+            const name = user.getAttribute('data-name');
+            if (name.includes(query)) {
+                user.style.display = 'flex';
+            } else {
+                user.style.display = 'none';
+            }
+        });
+    });
+</script>
