@@ -46,19 +46,29 @@ Integration with Tailwind CSS and Blade UI
 
 You can learn more about Laravel from the official Laravel documentation or Laracasts.
 
+
 Installation
+
 bash
+
 Copy
+
 Edit
+
 git clone https://github.com/RhandikaPutraSantoso/Chat-Realtime.git
+
 cd centachat
 
 composer install
+
 npm install
+
 npm run dev
 
 cp .env.example .env
+
 php artisan key:generate
+
 php artisan migrate
 
 php artisan serve
