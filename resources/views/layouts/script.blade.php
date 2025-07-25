@@ -178,25 +178,56 @@
 
     const container = document.getElementById('preview-container');
     const image = document.getElementById('preview-image');
+    const filePreview = document.getElementById('file-preview');
+    const fileIcon = document.getElementById('file-icon');
+    const fileName = document.getElementById('file-name');
+    const fileSize = document.getElementById('file-size');
 
+    const ext = file.name.split('.').pop().toLowerCase();
+    const fileSizeKb = (file.size / 1024).toFixed(1);
+
+    const iconMap = {
+        pdf: '/img/pdf-icon.png',
+        doc: '/img/doc-icon.png',
+        docx: '/img/doc-icon.png',
+        xls: '/img/excel-icon.png',
+        xlsx: '/img/excel-icon.png',
+        zip: '/img/zip-icon.png',
+        rar: '/img/zip-icon.png',
+        txt: '/img/txt-icon.png'
+    };
+
+    const icon = iconMap[ext] || '/img/file-icon.png';
+
+    // Preview gambar
     if (file.type.startsWith('image/')) {
         const reader = new FileReader();
         reader.onload = function (e) {
             image.src = e.target.result;
+            image.style.display = 'block';
+            filePreview.classList.add('hidden');
             container.classList.remove('hidden');
         };
         reader.readAsDataURL(file);
     } else {
-        // Preview dokumen (opsional: tampilkan nama file atau ikon)
-        image.src = '/img/file-icon.png'; // default icon
+        image.style.display = 'none';
+        filePreview.classList.remove('hidden');
         container.classList.remove('hidden');
+
+        fileIcon.src = icon;
+        fileName.textContent = file.name;
+        fileSize.textContent = `${fileSizeKb} KB`;
     }
 }
+
 function clearPreview() {
-    document.getElementById('preview-image').src = '';
-    document.getElementById('file').value = '';
-    document.getElementById('preview-container').classList.add('hidden');
-}
+            document.getElementById('preview-image').src = '';
+            document.getElementById('preview-image').style.display = 'none';
+            document.getElementById('file').value = '';
+            document.getElementById('preview-container').classList.add('hidden');
+            document.getElementById('file-preview').classList.add('hidden');
+        }
+
 
 
     </script>

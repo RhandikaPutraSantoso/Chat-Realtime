@@ -41,11 +41,20 @@
                 <!-- Dynamic messages -->
             </div>
 
-            <!-- Preview Gambar -->
+            <!-- Preview Gambar & File -->
             <div id="preview-container" class="hidden w-full px-4 pt-2 bg-gray-800">
-                <div class="preview-box">
-                    <button type="button" onclick="clearPreview()" class="close-btn">✕</button>
-                    <img id="preview-image" alt="Preview Image">
+                <div class="preview-box relative p-4 flex flex-col items-center justify-center">
+                    <button type="button" onclick="clearPreview()" class="close-btn absolute top-2 left-2">✕</button>
+
+                    <!-- Preview Gambar -->
+                    <img id="preview-image" class="max-w-xs rounded-lg shadow-lg mb-3" style="display: none;" />
+
+                    <!-- Preview File (PDF/DOC/ZIP etc) -->
+                    <div id="file-preview" class="hidden text-white flex flex-col items-center gap-2">
+                        <img id="file-icon" src="/img/file-icon.png" alt="File Icon" class="w-14 h-14">
+                        <div id="file-name" class="text-sm font-semibold truncate max-w-xs text-center"></div>
+                        <div id="file-size" class="text-xs text-gray-300"></div>
+                    </div>
                 </div>
             </div>
 
